@@ -1,56 +1,71 @@
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../app_routing/app_navigator.dart';
 import 'style/style.dart';
 import 'widgets/app_toast_widget.dart';
 
+// final myAppToast = AppToast._instance();
+
 class AppToast {
-  AppToast._();
+  AppToast._instance();
+  static AppToast instance = AppToast._instance();
 
-  static void success(title, body) {
-    FToast().showToast(
-      gravity: ToastGravity.BOTTOM,
+  bool _initialized = false;
+  final toast = FToast();
+
+  void initializeToast() {
+    toast.init(AppNavigator.key.currentContext);
+    _initialized = true;
+  }
+
+  void success(title, body) {
+    if (!_initialized) initializeToast();
+    toast.showToast(
+      gravity: ToastGravity.TOP,
       toastDuration: const Duration(seconds: 2),
       child: AppToastWidget(
-        backgroundColor: successGreen,
-        textColor: textWhite,
+        backgroundColor: darkGreenColor,
+        textColor: textWhiteColor,
         title: title,
         message: body,
       ),
     );
     // Fluttertoast.showToast(
     //   msg: title == null ? '$body' : '$title\n\n$body',
-    //   backgroundColor: Colors.greenAccent,
-    //   textColor: Colors.black,
+    //   backgroundColor: darkGreenColor,
+    //   textColor: textWhiteColor,
     //   gravity: ToastGravity.BOTTOM,
     // );
   }
 
-  static void message(title, body) {
-    FToast().showToast(
+  void message(title, body) {
+    if (!_initialized) initializeToast();
+    toast.showToast(
       gravity: ToastGravity.BOTTOM,
       toastDuration: const Duration(seconds: 2),
       child: AppToastWidget(
-        backgroundColor: backgroundBlack,
-        textColor: textWhite,
+        backgroundColor: backgroundBlackColor,
+        textColor: textWhiteColor,
         title: title,
         message: body,
       ),
     );
     // Fluttertoast.showToast(
     //   msg: title == null ? '$body' : '$title\n\n$body',
-    //   backgroundColor: Colors.black87,
-    //   textColor: Colors.white,
+    //   backgroundColor: backgroundBlackColor,
+    //   textColor: textWhiteColor,
     //   gravity: ToastGravity.BOTTOM,
     // );
   }
 
-  static void error(title, body) {
-    FToast().showToast(
-      gravity: ToastGravity.BOTTOM,
+  void error(title, body) {
+    if (!_initialized) initializeToast();
+    toast.showToast(
+      gravity: ToastGravity.TOP,
       toastDuration: const Duration(seconds: 2),
       child: AppToastWidget(
-        backgroundColor: errorRed,
-        textColor: textWhite,
+        backgroundColor: textBrownColor,
+        textColor: textWhiteColor,
         title: title,
         message: body,
       ),

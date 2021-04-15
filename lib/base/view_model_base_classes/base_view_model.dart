@@ -34,27 +34,27 @@ class BaseViewModel extends ChangeNotifier {
   void handleFailure(Failure failure, {String title}) {
     switch (failure.runtimeType) {
       case InputFailure:
-        AppToast.error(
+        AppToast.instance.error(
           title,
           (failure as InputFailure).errorMessage,
         );
         break;
 
       case ServerFailure:
-        AppToast.error(
+        AppToast.instance.error(
           title ?? 'A problem occured',
           (failure as ServerFailure).error ?? serverErrorMessage,
         );
         break;
       case BadAuthFailure:
-        AppToast.error(
+        AppToast.instance.error(
           title ?? 'A problem occured',
           (failure as BadAuthFailure).errorMessage ?? serverErrorMessage,
         );
         break;
 
       case NetworkFailure:
-        AppToast.error(
+        AppToast.instance.error(
           "Couldn't connect",
           networkErrorMessage,
         );
@@ -63,7 +63,7 @@ class BaseViewModel extends ChangeNotifier {
         break;
 
       default:
-        AppToast.error(title, 'Unknown error. Try again later.');
+        AppToast.instance.error(title, 'Unknown error. Try again later.');
     }
     if (failure.runtimeType != NetworkFailure)
       setState(viewState: ViewState.error);

@@ -26,7 +26,7 @@ class InfoDialog extends StatelessWidget {
           Radius.circular(16),
         ),
       ),
-      backgroundColor: backgroundWhite,
+      backgroundColor: backgroundWhiteColor,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

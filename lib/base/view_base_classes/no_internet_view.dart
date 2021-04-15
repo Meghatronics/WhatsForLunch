@@ -17,7 +17,7 @@ class NoInternetView extends StatelessWidget {
             child: FittedBox(
               child: Icon(
                 Icons.wifi,
-                color: textWhite,
+                color: textWhiteColor,
                 size: 64,
               ),
             ),

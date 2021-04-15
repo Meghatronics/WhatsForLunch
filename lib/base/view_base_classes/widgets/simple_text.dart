@@ -16,7 +16,7 @@ class SimpleText extends StatelessWidget {
     this.color,
     this.weight,
     this.size,
-    this.maxLines = null,
+    this.maxLines,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,10 @@ class SimpleText extends StatelessWidget {
       maxLines: maxLines,
       softWrap: true,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
-      style: GoogleFonts.muli(
+      style: GoogleFonts.montserrat(
         fontSize: size ?? 16,
         fontWeight: weight ?? FontWeight.w400,
-        color: color ?? themeTextBodyColor,
+        color: color ?? textBlackColor,
       ),
     );
   }

@@ -35,7 +35,7 @@ class AppToastWidget extends StatelessWidget {
               '$title',
               size: 20,
               weight: FontWeight.w400,
-              color: textWhite,
+              color: textWhiteColor,
             ),
             const SizedBox(height: 16),
           ],

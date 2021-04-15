@@ -8,10 +8,13 @@ import 'utilities/constants/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(TechTask());
+  runApp(const TechTask());
 }
 
 class TechTask extends StatelessWidget {
+  const TechTask({
+    Key key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,16 +26,16 @@ class TechTask extends StatelessWidget {
       initialRoute: welcomeViewRoute,
       //? THEMING
       theme: ThemeData(
-        primaryColor: themePrimaryColor,
-        scaffoldBackgroundColor: backgroundWhite,
-        splashColor: themeTextGrey.withOpacity(0.5),
+        primaryColor: darkGreenColor,
+        scaffoldBackgroundColor: scaffoldBackgroundColor,
+        splashColor: strokeBrownColor.withOpacity(0.7),
         textSelectionTheme: TextSelectionThemeData(
-          cursorColor: themeTextBodyColor,
-          selectionColor: themePrimaryColor.withOpacity(0.35),
-          selectionHandleColor: themeTextHeaderColor,
+          cursorColor: backgroundGreenColor,
+          selectionColor: textBrownColor.withOpacity(0.35),
+          selectionHandleColor: textBrownColor,
         ),
-        textTheme: GoogleFonts.muliTextTheme(),
-        dividerColor: const Color(0xFFECEBEB),
+        textTheme: GoogleFonts.montserratTextTheme(),
+        dividerColor: strokeBrownColor,
       ),
     );
   }
