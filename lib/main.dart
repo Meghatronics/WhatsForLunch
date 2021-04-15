@@ -1,62 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main() => runApp(MyApp());
+import 'app_routing/app_navigator.dart';
+import 'app_routing/app_router.dart';
+import 'base/view_base_classes/style/style.dart';
+import 'utilities/constants/constants.dart';
 
-class MyApp extends StatelessWidget {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const TechTask());
+}
+
+class TechTask extends StatelessWidget {
+  const TechTask({
+    Key key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: appName,
+      debugShowCheckedModeBanner: false,
+      //? ROUTING PARAMS
+      navigatorKey: AppNavigator.key,
+      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: welcomeViewRoute,
+      //? THEMING
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+        primaryColor: darkGreenColor,
+        scaffoldBackgroundColor: scaffoldBackgroundColor,
+        splashColor: strokeBrownColor.withOpacity(0.7),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: backgroundGreenColor,
+          selectionColor: textBrownColor.withOpacity(0.35),
+          selectionHandleColor: textBrownColor,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        textTheme: GoogleFonts.montserratTextTheme(),
+        dividerColor: strokeBrownColor,
       ),
     );
   }
