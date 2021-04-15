@@ -338,3 +338,7 @@ iOSInjectionProject/
 # End of https://www.gitignore.io/api/swift,kotlin,flutter,android,cocoapods,intellij+all
 
 **/ios/Flutter/flutter_export_environment.sh
+
+#MajorE local machine ignores
+.fvm
+android/app/src_pre1.12/
