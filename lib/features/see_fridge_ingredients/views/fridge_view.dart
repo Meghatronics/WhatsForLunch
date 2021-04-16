@@ -35,9 +35,9 @@ class FridgeView extends StatelessWidget {
             successWidget: SingleChildScrollView(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: 500,
+                  minHeight: 560,
                   maxHeight: MediaQuery.of(context).size.height.clamp(
-                        500.0,
+                        560.0,
                         double.infinity,
                       ),
                 ),
