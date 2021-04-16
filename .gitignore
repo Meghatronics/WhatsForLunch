@@ -343,3 +343,4 @@ iOSInjectionProject/
 .fvm
 android/app/src_pre1.12/
 analysis_options.yaml
+.flutter-plugins-dependencies
