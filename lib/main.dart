@@ -26,6 +26,11 @@ class TechTask extends StatelessWidget {
       initialRoute: welcomeViewRoute,
       //? THEMING
       theme: ThemeData(
+        colorScheme: const ColorScheme.light(
+          primary: darkGreenColor,
+          onPrimary: textWhiteColor,
+          onSurface: backgroundGreenColor,
+        ),
         primaryColor: darkGreenColor,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
         splashColor: strokeBrownColor.withOpacity(0.7),

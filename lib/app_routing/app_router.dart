@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
+import '../features/see_fridge_ingredients/views/fridge_view.dart';
+import '../features/see_fridge_ingredients/views/welcome_view.dart';
 import 'route_names.dart';
 
 class AppRouter {
@@ -17,13 +18,17 @@ class AppRouter {
   ///Used for `OnGenerateRoute` in *main.dart*
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case welcomeViewRoute:
+        return _cupertinoPageRoute(const WelcomeView());
+        break;
 
-      //*! Launch and Onboarding Routing _______________________________________
-   
+      case fridgeViewRoute:
+        return _cupertinoPageRoute(const FridgeView());
+        break;
 
       //* Bad route - Route not found page
       default:
-        return _cupertinoPageRoute(
+        return _materialPageRoute(
           Scaffold(
             body: Center(
               child: Text(
