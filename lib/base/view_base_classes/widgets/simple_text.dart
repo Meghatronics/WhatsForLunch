@@ -9,6 +9,7 @@ class SimpleText extends StatelessWidget {
   final FontWeight weight;
   final double size;
   final int maxLines;
+  final TextAlign align;
 
   const SimpleText(
     this.text, {
@@ -17,6 +18,7 @@ class SimpleText extends StatelessWidget {
     this.weight,
     this.size,
     this.maxLines,
+    this.align,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class SimpleText extends StatelessWidget {
       '$text',
       maxLines: maxLines,
       softWrap: true,
+      textAlign: align ?? TextAlign.start,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: GoogleFonts.montserrat(
         fontSize: size ?? 16,
