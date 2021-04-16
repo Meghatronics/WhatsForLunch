@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../base/data_base_classes/base_datasource.dart';
 import '../../../base/view_base_classes/base_page_builder.dart';
 import '../../../base/view_base_classes/style/style.dart';
 import '../../../base/view_base_classes/widgets/custom_dot_widget.dart';
 import '../../../base/view_base_classes/widgets/simple_text.dart';
-import '../data/recipe_datasource.dart';
 import '../view_models/recipes_view_model.dart';
 import '../widgets/edit_recipe_button.dart';
 import '../widgets/recipe_card.dart';
@@ -80,11 +78,11 @@ class SeeRecipesView extends StatelessWidget {
                   initState: (recipesViewModel) {
                     recipesViewModel.getRecipes(ingredientsForSearch);
                   },
-                  model: RecipesViewModel(
-                      datasource:
-                          RecipeDatasourceV1(baseDatasource: BaseDatasource())),
+                  model: locator(),
                   builder: (recipesViewModel, _) => StateBasedWidget(
                     state: recipesViewModel.viewState,
+                    retryCallback: () =>
+                        recipesViewModel.getRecipes(ingredientsForSearch),
                     successWidget: recipesViewModel.myRecipes.isEmpty
                         ? Align(
                             alignment: const Alignment(0, -0.3),
