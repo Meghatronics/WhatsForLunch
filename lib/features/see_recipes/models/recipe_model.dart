@@ -6,6 +6,6 @@ class RecipeModel {
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) => RecipeModel(
         name: json['title'],
-        ingredients: json['ingredients'],
+        ingredients: json['ingredients'].cast<String>(),
       );
 }
