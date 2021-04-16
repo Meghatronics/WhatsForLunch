@@ -1,5 +1,5 @@
 //* Credentials
-const apiBaseUrl = 'http://facebook.com/v1';
+const apiBaseUrl = 'https://lb7u7svcm5.execute-api.ap-southeast-1.amazonaws.com/dev';
 
 
 //* Client data
