@@ -1,6 +1,6 @@
 //* Credentials
-const apiBaseUrl = 'https://lb7u7svcm5.execute-api.ap-southeast-1.amazonaws.com/dev';
-
+const apiBaseUrl =
+    'https://lb7u7svcm5.execute-api.ap-southeast-1.amazonaws.com/dev';
 
 //* Client data
 const appName = 'Lunch for Son of Man';
@@ -16,3 +16,5 @@ const defaultAvatarAsset = 'assets/images/logo.png';
 const defaultNetworkImage = 'https://placeimg.com/300/550/nature';
 
 //* App pointers and keys
+const ingredientsNameListPointer = 'ingredients';
+const dateDescriptionPointer = 'dateDesc';
