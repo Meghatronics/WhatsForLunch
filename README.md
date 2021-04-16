@@ -13,4 +13,7 @@
 - Click the recipes button to see recipes.
 
 ## Fat APK
-Find a Fat Apk ready for download and install here - 
+Find a Fat Apk ready for download and install here - https://drive.google.com/file/d/1vCuGtn3topXVAhH9Kr5so1OGulJGL5Qp/view?usp=sharing
+
+## Design
+Here's a link to the design file for my solution - https://www.figma.com/file/OtwwQqQLRfeTYwYadhNkdM/Bitnob-assessment
