@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../utilities/enums.dart';
+import 'style/style.dart';
 import 'widgets/app_loading_indicator.dart';
 
 class StateBasedWidget extends StatelessWidget {
@@ -55,7 +56,7 @@ class StateBasedWidget extends StatelessWidget {
                         text: TextSpan(
                           text: 'An error occured. ',
                           style: const TextStyle(
-                            color: Colors.white70,
+                            color: textBrownColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
                           ),
@@ -87,7 +88,7 @@ class StateBasedWidget extends StatelessWidget {
                   text: TextSpan(
                     text: 'Could not connect. ',
                     style: const TextStyle(
-                      color: Colors.white70,
+                      color: textBrownColor,
                     ),
                     children: retryCallback == null
                         ? null
