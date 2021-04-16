@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'app_dependencies.dart';
 import 'app_routing/app_navigator.dart';
 import 'app_routing/app_router.dart';
 import 'base/view_base_classes/style/style.dart';
@@ -8,6 +9,7 @@ import 'utilities/constants/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AppDependencies.register();
   runApp(const TechTask());
 }
 

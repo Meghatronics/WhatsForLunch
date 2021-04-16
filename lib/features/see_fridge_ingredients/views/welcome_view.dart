@@ -52,7 +52,10 @@ class WelcomeView extends StatelessWidget {
                   color: lightGreenColor,
                 ),
                 onEnd: () {
-                  AppNavigator.pushNamedAndClear(fridgeViewRoute);
+                  Future.delayed(
+                    const Duration(seconds: 1),
+                    () => AppNavigator.pushNamedAndClear(fridgeViewRoute),
+                  );
                 },
               ),
               Divider(endIndent: MediaQuery.of(context).size.width - 210),
