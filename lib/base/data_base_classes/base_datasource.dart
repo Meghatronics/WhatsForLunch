@@ -1,21 +1,21 @@
-/// [BaseDatasource] 
-/// 
+/// [BaseDatasource]
+///
 /// Mixin interface to send Http requests and process the response
 /// to [ApiResponse] of type [<Map<String, dynamic>>]
-/// 
-/// Utilize the transform and transformToStatusOnly functions extended on 
-/// [ApiResponse<Map<String, dynamic>>] to convert ApiResponses from your 
-/// datasources, to values/models you wish to use. 
-/// 
-/// Returns error as [NetworkFailure] if request cannot connect. 
-/// 
-/// Returns error as [ServerFailure] if status code **500** is returned, 
-/// or if body returned cannot be decoded (body is not json). 
-/// 
-/// Return error as [InputFailure] if server returns error based on 
+///
+/// Utilize the transform and transformToStatusOnly functions extended on
+/// [ApiResponse<Map<String, dynamic>>] to convert ApiResponses from your
+/// datasources, to values/models you wish to use.
+///
+/// Returns error as [NetworkFailure] if request cannot connect.
+///
+/// Returns error as [ServerFailure] if status code **500** is returned,
+/// or if body returned cannot be decoded (body is not json).
+///
+/// Return error as [InputFailure] if server returns error based on
 /// conditions set in private function `_checkForError`
-/// 
-/// Original written by Flutterian MajorE 
+///
+/// Original written by Flutterian MajorE
 /// Github: @Meghatronics Twitter: @MajorE_1
 
 import 'dart:convert';
@@ -30,7 +30,7 @@ import 'api_response.dart';
 import 'exceptions.dart';
 import 'failures.dart';
 
-mixin BaseDatasource {
+class BaseDatasource {
   final String baseUrl = apiBaseUrl;
 
   static String _token;
@@ -62,7 +62,7 @@ mixin BaseDatasource {
       final data = jsonDecode(response.body);
       final error = _checkForError(response.statusCode, data);
       return ApiResponse(
-        data: data,
+        data: {'data': data},
         error: error,
       );
     } on FormatException {
@@ -183,27 +183,27 @@ mixin BaseDatasource {
   Failure _checkForError(int statusCode, data) {
     String returnedMessage;
 
-    if (data != null) {
-      //Check if request was successful
-      final success = data['status'] == 'success';
-      //If successful, return no failure
-      if (success ?? false) return null;
+    // if (data != null) {
+    //Check if request was successful
+    //   final success = data['status'] == 'success';
+    //   //If successful, return no failure
+    //   if (success ?? false) return null;
 
-      //Check list of errors
-      final errors = data['errors'] as Map;
+    //   //Check list of errors
+    //   final errors = data['errors'] as Map;
 
-      //If no error field - use messsage for failure
-      if (errors == null || errors.isEmpty) {
-        returnedMessage = data['message'];
-      }
-      //If there are error fields - use errors for failure
-      else {
-        returnedMessage = '';
-        errors.forEach((key, value) {
-          returnedMessage = '$returnedMessage\n${value[0]}';
-        });
-      }
-    }
+    //   //If no error field - use messsage for failure
+    //   if (errors == null || errors.isEmpty) {
+    //     returnedMessage = data['message'];
+    //   }
+    //   //If there are error fields - use errors for failure
+    //   else {
+    //     returnedMessage = '';
+    //     errors.forEach((key, value) {
+    //       returnedMessage = '$returnedMessage\n${value[0]}';
+    //     });
+    //   }
+    // }
     switch (statusCode) {
       case 200:
         return null;
