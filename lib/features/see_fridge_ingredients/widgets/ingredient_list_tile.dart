@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../base/view_base_classes/style/style.dart';
 import '../../../base/view_base_classes/widgets/simple_text.dart';
+
 import '../models/ingredient_model.dart';
 
 class IngredientListTile extends StatelessWidget {
   final IngredientModel ingredient;
   final bool selected;
   final Function(IngredientModel ingredient) onTap;
+
 
   const IngredientListTile({
     Key key,
@@ -18,6 +20,7 @@ class IngredientListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return InkWell(
       onTap: () => onTap(ingredient),
       child: Container(

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import '../../../base/data_base_classes/base_datasource.dart';
@@ -11,12 +12,14 @@ import '../view_models/ingredients_at_date_view_model.dart';
 import '../widgets/ingredient_list_tile.dart';
 import '../widgets/recipes_floating_action_button.dart';
 
+
 class FridgeView extends StatelessWidget {
   const FridgeView({
     Key key,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
     return BaseViewBuilder<FridgeViewModel>(
       model: FridgeViewModel(
         datasource: FridgeIngredientsDatasourceV1(
@@ -161,15 +164,18 @@ class FridgeView extends StatelessWidget {
                                       );
                                     },
                                   ),
+
                           ),
                         ),
                       ),
                     ],
                   ),
+
                 ),
               ),
             ),
           )),
     );
+
   }
 }
