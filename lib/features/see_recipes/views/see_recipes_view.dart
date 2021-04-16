@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../base/data_base_classes/base_datasource.dart';
+import '../../../base/view_base_classes/base_page_builder.dart';
 import '../../../base/view_base_classes/style/style.dart';
 import '../../../base/view_base_classes/widgets/custom_dot_widget.dart';
 import '../../../base/view_base_classes/widgets/simple_text.dart';
-import '../models/recipe_model.dart';
+import '../data/recipe_datasource.dart';
+import '../view_models/recipes_view_model.dart';
 import '../widgets/edit_recipe_button.dart';
 import '../widgets/recipe_card.dart';
 import '../widgets/recipe_description_text.dart';
@@ -73,42 +76,48 @@ class SeeRecipesView extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Expanded(
-                child: [].isEmpty //TODO
-                    ? Align(
-                        alignment: const Alignment(0, -0.3),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const SimpleText(
-                              'Uh-oh!',
-                              size: 32,
-                              color: strokeBrownColor,
-                              weight: FontWeight.w500,
-                              align: TextAlign.center,
+                child: BaseViewBuilder<RecipesViewModel>(
+                  initState: (recipesViewModel) {
+                    recipesViewModel.getRecipes(ingredientsForSearch);
+                  },
+                  model: RecipesViewModel(
+                      datasource:
+                          RecipeDatasourceV1(baseDatasource: BaseDatasource())),
+                  builder: (recipesViewModel, _) => StateBasedWidget(
+                    state: recipesViewModel.viewState,
+                    successWidget: recipesViewModel.myRecipes.isEmpty
+                        ? Align(
+                            alignment: const Alignment(0, -0.3),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SimpleText(
+                                  'Uh-oh!',
+                                  size: 32,
+                                  color: strokeBrownColor,
+                                  weight: FontWeight.w500,
+                                  align: TextAlign.center,
+                                ),
+                                const SizedBox(height: 16),
+                                const SimpleText(
+                                  'We cannot suggest any recipes '
+                                  'from those items',
+                                  size: 16,
+                                  color: darkGreenColor,
+                                  align: TextAlign.center,
+                                )
+                              ],
+                            ))
+                        : ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: recipesViewModel.myRecipes.length,
+                            itemBuilder: (_, index) => RecipeCard(
+                              recipe: recipesViewModel.myRecipes[index],
                             ),
-                            const SizedBox(height: 16),
-                            const SimpleText(
-                              'We cannot suggest any recipes from those items',
-                              size: 16,
-                              color: darkGreenColor,
-                              align: TextAlign.center,
-                            )
-                          ],
-                        ))
-                    : ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (_, index) => RecipeCard(
-                          recipe: RecipeModel(
-                            name: 'Ham and Cheese toaste',
-                            ingredients: [
-                              'Ham',
-                              'Bread',
-                              'Bone',
-                            ],
                           ),
-                        ),
-                      ),
+                  ),
+                ),
               ),
             ],
           ),
